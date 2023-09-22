@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "usuario": "John Doe",
+      "email": "john.due@gmail.com"
+    }
+  ],
+  "hoteles": [
+    {
+      "id": 1,
+      "nombre": "The Chatwal",
+      "direccion": "123 Calle Principal, New York",
+      "imagen": "https://www.luxury-hotels.com/hotelpics/nyc2.jpg",
+      "cantidad_habitaciones": 100,
+      "numero_estrellas": 4,
+      "pais": "EEUU"
+    },
+    {
+      "id": 2,
+      "nombre": "The Benjamin",
+      "direccion": "123 Calle Principal, New York",
+      "imagen": "https://www.luxury-hotels.com/hotelpics/nyc4.jpg",
+      "cantidad_habitaciones": 100,
+      "numero_estrellas": 5,
+      "pais": "EEUU"
+    }
+  ]
+}
