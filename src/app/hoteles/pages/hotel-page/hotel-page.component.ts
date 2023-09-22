@@ -23,7 +23,6 @@ export class HotelPageComponent {
         switchMap( ({ id }) => this.hotelesService.getHotelById( id )),
       )
       .subscribe( hotel => {
-        console.log(hotel)
         if ( !hotel ) return this.router.navigate([ '/hoteles/list' ]);
 
         this.hotel = hotel;

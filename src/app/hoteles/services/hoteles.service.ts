@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { environments } from '../../../environments/environments';
 import { Hotel } from '../interfaces/hotel.interface';
 
@@ -26,6 +26,25 @@ export class HotelesService {
 
   getSuggestions( query: string ): Observable<Hotel[]> {
     return this.http.get<Hotel[]>(`${ this.baseUrl }/hoteles?q=${ query }&_limit=6`);
+  }
+
+  addHotel( hotel: Hotel ): Observable<Hotel> {
+    return this.http.post<Hotel>(`${ this.baseUrl }/hoteles`, hotel );
+  }
+
+  updateHotel( hotel: Hotel ): Observable<Hotel> {
+    if ( !hotel.id ) throw Error('Hotel id is required');
+
+    return this.http.patch<Hotel>(`${ this.baseUrl }/hoteles/${ hotel.id }`, hotel );
+  }
+
+  deleteHotelById( id: string ): Observable<boolean> {
+
+    return this.http.delete(`${ this.baseUrl }/hoteles/${ id }`)
+      .pipe(
+        map( resp => true ),
+        catchError( err => of(false) ),
+      );
   }
 
 }

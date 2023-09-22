@@ -9,6 +9,7 @@ import { HotelesRoutingModule } from './hoteles-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { CardComponent } from './components/card/card.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NewHotelPageComponent,
     SearchPageComponent,
     CardComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,

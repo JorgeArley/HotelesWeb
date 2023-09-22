@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "usuario": "John Doe",
+      "user": "John Doe",
       "email": "john.due@gmail.com"
     }
   ],
@@ -24,6 +24,15 @@
       "cantidad_habitaciones": 100,
       "numero_estrellas": 5,
       "pais": "EEUU"
+    },
+    {
+      "id": 3,
+      "cantidad_habitaciones": 5,
+      "direccion": "eliminar",
+      "imagen": "https://www.luxury-hotels.com/hotelpics/london4.jpg",
+      "nombre": "eliminar",
+      "numero_estrellas": 5,
+      "pais": "England"
     }
   ]
 }

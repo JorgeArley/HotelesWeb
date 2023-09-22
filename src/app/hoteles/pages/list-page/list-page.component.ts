@@ -16,7 +16,6 @@ export class ListPageComponent {
     this.hotelesService.getHoteles()
       .subscribe( hoteles => {
         this.hoteles = hoteles
-        console.log(hoteles);
       });
   }
 }
