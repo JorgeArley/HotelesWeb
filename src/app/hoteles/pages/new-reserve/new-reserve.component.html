@@ -1,0 +1,60 @@
+<div class="grid p-3">
+  <div class="col-12 mt-5 md:col-6 md:col-offset-3 md:mt-8">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>
+            <h2>Nueva Reserva</h2>
+          </mat-card-title>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <form class="grid" [formGroup]="reserveForm">
+
+
+          <mat-form-field class="col-12">
+            <mat-label>fecha_ingreso</mat-label>
+            <input matInput type="text" required formControlName="fecha_ingreso" />
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>fecha_salida</mat-label>
+            <input matInput type="text" required formControlName="fecha_salida" />
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>cantidad_personas</mat-label>
+            <input matInput type="number" required formControlName="cantidad_personas" />
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>ciudad_destino</mat-label>
+            <input matInput type="text" required formControlName="ciudad_destino" />
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>contacto_emergencia</mat-label>
+            <input matInput type="text" required formControlName="contacto_emergencia" />
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>tel_contacto</mat-label>
+            <input matInput type="text" required formControlName="tel_contacto" />
+          </mat-form-field>
+
+        </form>
+
+        <div class="flex justify-content-between">
+          <span></span>
+          <button (click)="onSaveReserve()" [disabled]="reserveForm.invalid"
+            mat-flat-button color="primary">
+            <mat-icon>save</mat-icon>
+            Guardar
+          </button>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -12,7 +12,9 @@ export class LayoutPageComponent {
   public sidebarItems = [
     { label: 'Hoteles', icon: 'label', url: './list' },
     { label: 'Crear Hotel', icon: 'add', url: './new-hotel' },
-    { label: 'Buscar Reserva', icon: 'search', url: './search' },
+    { label: 'Crear Habitacion', icon: 'meeting_room', url: './new-room' },
+    { label: 'Nueva Reserva', icon: 'hotel', url: './new-booking' },
+    { label: 'Buscar Reserva', icon: 'searchOff', url: './search' },
   ];
 
   constructor(private authService: AuthService,

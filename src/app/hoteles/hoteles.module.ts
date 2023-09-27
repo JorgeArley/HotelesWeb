@@ -10,6 +10,9 @@ import { MaterialModule } from '../material/material.module';
 import { CardComponent } from './components/card/card.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { NewRoomComponent } from './pages/new-room/new-room.component';
+import { NewBookingComponent } from './pages/new-booking/new-booking.component';
+import { NewReserveComponent } from './pages/new-reserve/new-reserve.component';
 
 
 
@@ -22,6 +25,9 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     SearchPageComponent,
     CardComponent,
     ConfirmDialogComponent,
+    NewRoomComponent,
+    NewBookingComponent,
+    NewReserveComponent,
   ],
   imports: [
     CommonModule,

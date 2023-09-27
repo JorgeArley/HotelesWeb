@@ -1,0 +1,32 @@
+<mat-form-field class="col-12">
+  <mat-label>Escoge el Hotel</mat-label>
+  <mat-select >
+    <mat-option *ngFor="let hotel of listHotels" [value]="hotel.id" (click)="getHotel(hotel.id)">
+      {{hotel.nombre}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  <div class="grid bm-8 pt-2">
+    <div *ngFor="let room of listRooms"
+      class="col-12 sm:col-4 md:col-3 xl:col-2">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>Habitacion {{room.numero}}</mat-card-title>
+            <mat-card-subtitle>Tipo {{room.tipo}}</mat-card-subtitle>
+            <mat-card-subtitle>Ubicacion {{room.ubicacion}}</mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>          
+          <mat-chip-option disabled ="warn">impuesto: {{room.impuesto}}</mat-chip-option>
+          <mat-chip-option disabled color="accent">costo: {{room.costo_base}}</mat-chip-option>
+          <mat-chip-option disabled *ngIf="room.disponible" color="accent">disponible</mat-chip-option>
+          <mat-chip-option disabled *ngIf="room.habilitado" color="accent">Habilitada</mat-chip-option>         
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="guardarReserva(room.id)">Reservar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
