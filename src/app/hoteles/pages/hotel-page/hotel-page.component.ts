@@ -22,10 +22,9 @@ export class HotelPageComponent {
       .pipe(
         switchMap( ({ id }) => this.hotelesService.getHotelById( id )),
       )
-      .subscribe( hotel => {
-        if ( !hotel ) return this.router.navigate([ '/hoteles/list' ]);
-
-        this.hotel = hotel;
+      .subscribe( (resp: any) => {
+        if ( !resp ) return this.router.navigate([ '/hoteles/list' ]);
+        this.hotel = resp.hotel;
         return;
       })
   }

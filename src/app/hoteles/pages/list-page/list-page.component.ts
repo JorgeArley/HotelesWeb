@@ -14,8 +14,8 @@ export class ListPageComponent {
 
   ngOnInit(): void {
     this.hotelesService.getHoteles()
-      .subscribe( hoteles => {
-        this.hoteles = hoteles
+      .subscribe( (hoteles:any) => {
+        this.hoteles = hoteles.hoteles
       });
   }
 }

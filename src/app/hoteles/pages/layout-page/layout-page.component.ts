@@ -10,9 +10,9 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class LayoutPageComponent {
   public sidebarItems = [
-    { label: 'Listado', icon: 'label', url: './list' },
-    { label: 'Añadir', icon: 'add', url: './new-hotel' },
-    { label: 'Buscar', icon: 'search', url: './search' },
+    { label: 'Hoteles', icon: 'label', url: './list' },
+    { label: 'Crear Hotel', icon: 'add', url: './new-hotel' },
+    { label: 'Buscar Reserva', icon: 'search', url: './search' },
   ];
 
   constructor(private authService: AuthService,

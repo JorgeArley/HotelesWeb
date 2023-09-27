@@ -1,31 +1,90 @@
+<form 
+  autocomplete="off"
+  [formGroup]="formRegister"
+  (ngSubmit)="onRegister()"
+  >
+  <div class="flex flex-column">
 
-<div class="flex flex-column">
-
-    <span class="text-lg mb-4">Registro</span>
+    <span class="text-lg mb-4">Registro de usuario</span>
   
     <mat-form-field>
-      <mat-label>Usuario</mat-label>
-      <input type="text" matInput placeholder="Nombre de usuario">
+      <mat-label>Nombres</mat-label>
+      <input type="text"
+            matInput placeholder="Nombres del usuario"
+            formControlName="nombre">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Apellidos</mat-label>
+      <input type="text"
+            matInput placeholder="Apellidos del usuario"
+            formControlName="apellidos">
     </mat-form-field>
   
     <mat-form-field>
-      <mat-label>Nombre</mat-label>
-      <input type="text" matInput placeholder="Nombre de usuario">
+      <mat-label>email</mat-label>
+      <input type="email"
+            matInput placeholder="email"
+            formControlName="email">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker"
+        formControlName="fecha_nacimiento">
+      <mat-hint>YYYY-MM-DD</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> 
+  
+    <mat-form-field>
+      <mat-label>genero</mat-label>
+      <mat-select formControlName="genero">
+        <mat-option *ngFor="let genre of genres" [value]="genre.value">
+          {{genre.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>tipo documento</mat-label>
+      <input type="text"
+            matInput placeholder="tipo documento"
+            formControlName="tipo_documento">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>documento</mat-label>
+      <input type="text"
+            matInput placeholder="documento"
+            formControlName="doc_user">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>telefono</mat-label>
+      <input type="text"
+            matInput placeholder="telefono"
+            formControlName="telefono">
     </mat-form-field>
   
     <mat-form-field>
       <mat-label>Contraseña</mat-label>
-      <input type="password" matInput placeholder="Contraseña">
+      <input type="password"
+          
+      formControlName="password"
+        matInput placeholder="Contraseña">
     </mat-form-field>
   
-    <button mat-button mat-flat-button color="primary">
+    <button mat-button mat-flat-button color="primary"
+      [disabled]="formRegister.invalid">
       <mat-icon>save</mat-icon>
       Crear cuenta
     </button>
   
   
     <div class="flex justify-content-end mt-5">
-      <a routerLink="/auth/login">¿No tienes cuenta?</a>
+      <a routerLink="/auth/login">¿Ya tienes cuenta?</a>
     </div>
   
   </div>
+</form>

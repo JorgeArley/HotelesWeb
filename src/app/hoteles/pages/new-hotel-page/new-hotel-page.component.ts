@@ -46,13 +46,12 @@ export class NewHotelPageComponent {
     this.activatedRoute.params
       .pipe(
         switchMap(({ id }) => this.hotelesService.getHotelById(id)),
-      ).subscribe(hotel => {
-
+      ).subscribe((hotel:any) => {
         if (!hotel) {
           return this.router.navigateByUrl('/');
         }
 
-        this.hotelForm.reset(hotel);
+        this.hotelForm.reset(hotel.hotel);
         return;
       });
 
@@ -72,9 +71,9 @@ export class NewHotelPageComponent {
     }
 
     this.hotelesService.addHotel(this.currentHotel)
-      .subscribe(hotel => {
-        this.router.navigate(['/hoteles/edit', hotel.id]);
-        this.showSnackbar(`${hotel.nombre} creado!`);
+      .subscribe((resp:any) => {
+        this.router.navigate(['/hoteles/edit', resp.hotel.id]);
+        this.showSnackbar(`${resp.hotel.nombre} creado!`);
       });
   }
 

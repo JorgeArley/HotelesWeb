@@ -1,9 +1,10 @@
 <div class="flex flex-column p-2">
 
-    <h3>Buscador</h3>
+    <h2>Buscador de Reservas</h2>
+    <h4>Puedes buscar por "fecha de ingreso", "salida", "cantidad de porsonsas" o "ciudad"</h4>
   
     <mat-form-field>
-      <mat-label>Buscador de hoteles</mat-label>
+      <mat-label>Buscador</mat-label>
       <input
         type="text"
         matInput
@@ -16,12 +17,10 @@
         #auto="matAutocomplete"
         (optionSelected)="onSelectedOption( $event )"
         >
-        <mat-option *ngFor="let hotel of hoteles" [value]="hotel">
-          {{ hotel.nombre }}
-        </mat-option>
+
   
         <mat-option
-          *ngIf="hoteles.length === 0 && searchInput.value && searchInput.value.length > 0"
+          *ngIf="reservas.length === 0 && searchInput.value && searchInput.value.length > 0"
           value="">
           No se encontró nada con el término {{ searchInput.value }}
         </mat-option>
@@ -29,8 +28,30 @@
   
     </mat-form-field>
   
-  
-    {{ selectedHotel | json }}
-  
-  
   </div>
+  
+    <div class="grid bm-8 pt-2">
+
+      <div *ngFor="let reserva of reservas"
+        class="col-12 sm:col-4 md:col-3 xl:col-2">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title-group>
+              <mat-card-title>Habitacion {{reserva.habitacion.numero}}</mat-card-title>
+              <mat-card-subtitle>Personas {{reserva.cantidad_personas}}</mat-card-subtitle>
+              <mat-card-subtitle>Hotel {{reserva.habitacion.hotel.nombre}}</mat-card-subtitle>
+              <img mat-card-sm-image src="{{reserva.habitacion.hotel.imagen}}" >
+            </mat-card-title-group>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-chip-option color="warn">fecha salida: {{reserva.fecha_salida}}</mat-chip-option>
+            <mat-chip-option color="warn">cantidad personas: {{reserva.cantidad_personas}}</mat-chip-option>
+            <mat-chip-option color="warn">ciudad destino: {{reserva.ciudad_destino}}</mat-chip-option>
+            <mat-chip-option color="warn">contacto: {{reserva.contacto_emergencia}}</mat-chip-option>
+            <mat-chip-option color="warn">tel contacto: {{reserva.tel_contacto}}</mat-chip-option>
+            
+          </mat-card-content>
+        </mat-card>
+      </div>
+    
+    </div>

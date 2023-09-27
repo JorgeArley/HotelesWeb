@@ -4,6 +4,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 import { HotelesService } from '../../services/hoteles.service';
 import { Hotel } from '../../interfaces/hotel.interface';
+import { pipe } from 'rxjs';
 
 @Component({
   selector: 'app-search-page',
@@ -14,16 +15,20 @@ import { Hotel } from '../../interfaces/hotel.interface';
 export class SearchPageComponent {
 
   public searchInput = new FormControl('');
-  public hoteles: Hotel[] = [];
+  public reservas: any[] = [];
   public selectedHotel?: Hotel;
 
   constructor( private hotelesService: HotelesService ){}
 
+  
+
   searchHotel() {
     const value: string = this.searchInput.value || '';
+    if (!value) { return }
 
     this.hotelesService.getSuggestions( value )
-      .subscribe( hoteles => this.hoteles = hoteles );
+    .subscribe( (resp: any) => {
+      this.reservas = resp.reservas} )    
   }
 
 

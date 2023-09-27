@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environments } from 'src/environments/environments';
 import { User } from '../interfaces/user';
@@ -20,11 +20,10 @@ export class AuthService {
   }
 
   login( email: string, password: string ):Observable<User> {
-    // http.post('login',{ email, password });
-    return this.http.get<User>(`${ this.baseUrl }/users/1`)
+    return this.http.post<User>(`${ this.baseUrl}/login`,{ email, password })
       .pipe(
         tap( user => this.user = user ),
-        tap( user => localStorage.setItem('token', 'prueba.tecnica.frontend' )),
+        tap( (user:any) => localStorage.setItem('token', user.token )),
       );
   }
 
@@ -32,9 +31,7 @@ export class AuthService {
 
     if ( !localStorage.getItem('token') ) return of(false);
 
-    const token = localStorage.getItem('token');
-
-    return this.http.get<User>(`${ this.baseUrl }/users/1`)
+    return this.http.get<User>(`${ this.baseUrl }/login/renew`)
       .pipe(
         tap( user => this.user = user ),
         map( user => !!user ),
