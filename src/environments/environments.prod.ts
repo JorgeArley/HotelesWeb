@@ -1,3 +1,3 @@
 export const environments = {
-    baseUrl: 'http://jorgeArley.com/api'
-  }
+  baseUrl: 'https://apostar-test-ba03579d885b.herokuapp.com/api'
+}
