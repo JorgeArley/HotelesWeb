@@ -27,14 +27,14 @@ export class RegisterPageComponent {
   ){}
 
   public formRegister: FormGroup = this.fb.group({
-    nombre:    ['', [ Validators.required, Validators.minLength(6) ]],
-    apellidos: ['', [ Validators.required, Validators.minLength(6) ]],
+    nombre:    ['', [ Validators.required, Validators.minLength(1) ]],
+    apellidos: ['', [ Validators.required, Validators.minLength(1) ]],
     email: ['', [ Validators.required, Validators.email ]],
     fecha_nacimiento: ['', [ Validators.required, Validators.minLength(6) ]],
     genero: ['', [ Validators.required ]],
-    tipo_documento: ['', [ Validators.required, Validators.minLength(6) ]],
-    doc_user: ['', [ Validators.required, Validators.minLength(6) ]],
-    telefono: ['', [ Validators.required, Validators.minLength(6) ]],
+    tipo_documento: ['', [ Validators.required, Validators.minLength(1) ]],
+    doc_user: ['', [ Validators.required, Validators.minLength(1) ]],
+    telefono: ['', [ Validators.required, Validators.minLength(1) ]],
     password: ['', [ Validators.required, Validators.minLength(6) ]],
     type: ['user', [ Validators.required, Validators.minLength(1) ]],
   });

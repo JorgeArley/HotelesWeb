@@ -24,7 +24,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 3. Puede crear un usuario para probar el role user
 4. La aplicacion esta hecha en angular 16, express y mongo para DB
 5. La ruta para la prueba es: 
-    `https://mellow-caramel-13eceb.netlify.app/#/auth/login`
+    `https://quiet-manatee-3384ff.netlify.app/#/auth/login`
 6. Los repositorios son los siguientes:
     * Frontend: `https://github.com/JorgeArley/HotelesWeb`
     * Backend: `https://github.com/JorgeArley/HotelesBackend`
