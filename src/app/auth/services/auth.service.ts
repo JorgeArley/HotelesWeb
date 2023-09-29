@@ -24,6 +24,7 @@ export class AuthService {
       .pipe(
         tap( user => this.user = user ),
         tap( (user:any) => localStorage.setItem('token', user.token )),
+        tap( (user:any) => localStorage.setItem('role', user.type)),
       );
   }
 

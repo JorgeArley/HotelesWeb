@@ -17,6 +17,7 @@ export class UsuarioService {
     return this.http.post(`${base_url}/usuarios`, formData)
       .pipe(
         tap( (user:any) => localStorage.setItem('token', user.token )),
+        tap( (user:any) => localStorage.setItem('role', user.usuario.type )),
       );
   }
 }

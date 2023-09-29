@@ -10,6 +10,9 @@ export class CardComponent {
   @Input()
   public hotel!: Hotel;
 
+  @Input()
+  public role?: string | null;
+
 
   ngOnInit(): void {
     if ( !this.hotel ) throw Error('Hotel property is required');

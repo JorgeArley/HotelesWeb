@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-page',
@@ -29,7 +30,8 @@ export class LoginPageComponent {
     .subscribe({
       next: () => this.router.navigateByUrl('/'),
       error: (message) => {
-        console.log(message)
+        Swal.fire('Error','Credenciales incorrectas', 'error');
+
       }
     })  
     

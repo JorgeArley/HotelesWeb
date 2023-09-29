@@ -1,11 +1,21 @@
-<mat-form-field class="col-12">
-  <mat-label>Escoge el Hotel</mat-label>
-  <mat-select >
-    <mat-option *ngFor="let hotel of listHotels" [value]="hotel.id" (click)="getHotel(hotel.id)">
-      {{hotel.nombre}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<h1>Busca el hotel de preferencia</h1>
+  <form class="example-form">
+    <mat-form-field class="example-full-width col-12">
+      <mat-label>Hotel</mat-label>
+      <input type="text"
+            placeholder="Escribe el nombre del hotel"
+            aria-label="Hotel"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async"
+        (click)="getHotel(option.id)" [value]="option.name">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
 
   <div class="grid bm-8 pt-2">
     <div *ngFor="let room of listRooms"
@@ -25,7 +35,8 @@
           <mat-chip-option disabled *ngIf="room.habilitado" color="accent">Habilitada</mat-chip-option>         
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button (click)="guardarReserva(room.id)">Reservar</button>
+          <button *ngIf="room.disponible && room.habilitado" mat-button color="primary" (click)="guardarReserva(room.id)">Reservar</button>
+          <button *ngIf="role == 'admin'" mat-button color="accent" (click)="EditarRoom(room.id)">Editar</button>
         </mat-card-actions>
       </mat-card>
     </div>

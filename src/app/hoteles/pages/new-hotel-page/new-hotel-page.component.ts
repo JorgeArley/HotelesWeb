@@ -7,6 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Hotel } from '../../interfaces/hotel.interface';
 import { filter, switchMap } from 'rxjs';
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class NewHotelPageComponent {
     nombre: new FormControl(''),
     numero_estrellas: new FormControl(''),
     pais: new FormControl(''),
+    enable: new FormControl(true),
   });
 
   constructor(
@@ -64,7 +66,8 @@ export class NewHotelPageComponent {
     if (this.currentHotel.id) {
       this.hotelesService.updateHotel(this.currentHotel)
         .subscribe(hotel => {
-          this.showSnackbar(`${hotel.nombre} actualizado!`);
+          Swal.fire('Hecho', `Hotel actualizado`, 'success');
+          this.router.navigate(['/hoteles']);
         });
 
       return;

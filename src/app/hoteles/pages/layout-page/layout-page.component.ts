@@ -11,17 +11,24 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class LayoutPageComponent {
   public sidebarItems = [
     { label: 'Hoteles', icon: 'label', url: './list' },
-    { label: 'Crear Hotel', icon: 'add', url: './new-hotel' },
-    { label: 'Crear Habitacion', icon: 'meeting_room', url: './new-room' },
-    { label: 'Nueva Reserva', icon: 'hotel', url: './new-booking' },
+    { label: 'Buscar Hotel', icon: 'hotel', url: './new-booking' },
     { label: 'Buscar Reserva', icon: 'searchOff', url: './search' },
   ];
 
+  public role = localStorage.getItem('role');
+  
   constructor(private authService: AuthService,
               private router: Router) {}
 
   get user():User | undefined {
     return this.authService.currentUser;
+  }
+
+  ngOnInit(): void {
+    if (this.role === 'admin') {
+      this.sidebarItems.push({ label: 'Crear Hotel', icon: 'add', url: './new-hotel'}),
+      this.sidebarItems.push({ label: 'Crear Habitacion', icon: 'meeting_room', url: './new-room'})
+    }
   }
 
   onLogout() {

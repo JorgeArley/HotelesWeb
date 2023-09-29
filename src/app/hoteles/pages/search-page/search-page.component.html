@@ -33,7 +33,7 @@
     <div class="grid bm-8 pt-2">
 
       <div *ngFor="let reserva of reservas"
-        class="col-12 sm:col-4 md:col-3 xl:col-2">
+        class="col-12 sm:col-6 md:col-4 xl:col-3">
         <mat-card class="example-card">
           <mat-card-header>
             <mat-card-title-group>
@@ -49,7 +49,16 @@
             <mat-chip-option color="warn">ciudad destino: {{reserva.ciudad_destino}}</mat-chip-option>
             <mat-chip-option color="warn">contacto: {{reserva.contacto_emergencia}}</mat-chip-option>
             <mat-chip-option color="warn">tel contacto: {{reserva.tel_contacto}}</mat-chip-option>
-            
+
+            <div class="col-12 mt-5 md:col-12  md:mt-12">
+              <h2>Huespedes en la reserva</h2>
+              <ol class="lista2">
+                <li *ngFor="let resident of reserva.residents">
+                  <span>{{resident.nombre}} {{resident.apellidos}}</span>
+                </li>
+              </ol>
+            </div>
+
           </mat-card-content>
         </mat-card>
       </div>

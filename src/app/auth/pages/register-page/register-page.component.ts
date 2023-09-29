@@ -27,15 +27,16 @@ export class RegisterPageComponent {
   ){}
 
   public formRegister: FormGroup = this.fb.group({
-    nombre:    ['jorges', [ Validators.required, Validators.minLength(6) ]],
-    apellidos: ['123456', [ Validators.required, Validators.minLength(6) ]],
-    email: ['jorge@gmail.com', [ Validators.required, Validators.email ]],
-    fecha_nacimiento: ['2010/12/12', [ Validators.required, Validators.minLength(6) ]],
-    genero: ['mujer', [ Validators.required ]],
-    tipo_documento: ['123456', [ Validators.required, Validators.minLength(6) ]],
-    doc_user: ['123456', [ Validators.required, Validators.minLength(6) ]],
-    telefono: ['123456', [ Validators.required, Validators.minLength(6) ]],
-    password: ['123456', [ Validators.required, Validators.minLength(6) ]],
+    nombre:    ['', [ Validators.required, Validators.minLength(6) ]],
+    apellidos: ['', [ Validators.required, Validators.minLength(6) ]],
+    email: ['', [ Validators.required, Validators.email ]],
+    fecha_nacimiento: ['', [ Validators.required, Validators.minLength(6) ]],
+    genero: ['', [ Validators.required ]],
+    tipo_documento: ['', [ Validators.required, Validators.minLength(6) ]],
+    doc_user: ['', [ Validators.required, Validators.minLength(6) ]],
+    telefono: ['', [ Validators.required, Validators.minLength(6) ]],
+    password: ['', [ Validators.required, Validators.minLength(6) ]],
+    type: ['user', [ Validators.required, Validators.minLength(1) ]],
   });
 
   onRegister() {

@@ -1,6 +1,13 @@
 <div class="grid p-3">
-  <div class="col-12 mt-5 md:col-6 md:col-offset-3 md:mt-8">
-
+  <div class="col-12 mt-5 md:col-12  md:mt-12" *ngIf="Residents.length > 0">
+    <h2>Huespedes en la reserva</h2>
+    <ol class="lista2">
+      <li *ngFor="let resident of Residents">
+        <span>{{resident.nombre}} {{resident.apellidos}}</span>
+      </li>
+    </ol>
+  </div>
+  <div class="col-12 mt-5 md:col-6  md:mt-8">
     <mat-card>
       <mat-card-header>
         <mat-card-title-group>
@@ -12,15 +19,20 @@
       <mat-card-content>
         <form class="grid" [formGroup]="reserveForm">
 
-
           <mat-form-field class="col-12">
-            <mat-label>fecha_ingreso</mat-label>
-            <input matInput type="text" required formControlName="fecha_ingreso" />
+            <mat-label>Fecha de ingreso</mat-label>
+            <input matInput [matDatepicker]="pickerI" formControlName="fecha_ingreso">
+            <mat-hint>YYYY-MM-DD</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerI"></mat-datepicker-toggle>
+            <mat-datepicker #pickerI></mat-datepicker>
           </mat-form-field>
 
           <mat-form-field class="col-12">
-            <mat-label>fecha_salida</mat-label>
-            <input matInput type="text" required formControlName="fecha_salida" />
+            <mat-label>Fecha de salida</mat-label>
+            <input matInput [matDatepicker]="pickerB" formControlName="fecha_salida">
+            <mat-hint>YYYY-MM-DD</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerB"></mat-datepicker-toggle>
+            <mat-datepicker #pickerB></mat-datepicker>
           </mat-form-field>
 
           <mat-form-field class="col-12">
@@ -47,12 +59,85 @@
 
         <div class="flex justify-content-between">
           <span></span>
-          <button (click)="onSaveReserve()" [disabled]="reserveForm.invalid"
-            mat-flat-button color="primary">
+          <button (click)="onSaveReserve()" [disabled]="reserveForm.invalid" mat-flat-button color="primary">
             <mat-icon>save</mat-icon>
             Guardar
           </button>
         </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-12 mt-5 md:col-6  md:mt-8">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>
+            <h2>Agregar Huespedes</h2>
+          </mat-card-title>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+
+        <form autocomplete="off" [formGroup]="formResident">
+          <div class="flex flex-column">
+
+            <mat-form-field>
+              <mat-label>Nombres</mat-label>
+              <input type="text" matInput placeholder="Nombres del usuario" formControlName="nombre">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Apellidos</mat-label>
+              <input type="text" matInput placeholder="Apellidos del usuario" formControlName="apellidos">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>email</mat-label>
+              <input type="email" matInput placeholder="email" formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input matInput [matDatepicker]="pickerR" formControlName="fecha_nacimiento">
+              <mat-hint>YYYY-MM-DD</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="pickerR"></mat-datepicker-toggle>
+              <mat-datepicker #pickerR></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>genero</mat-label>
+              <mat-select formControlName="genero">
+                <mat-option *ngFor="let genre of genres" [value]="genre.value">
+                  {{genre.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>tipo documento</mat-label>
+              <input type="text" matInput placeholder="tipo documento" formControlName="tipo_documento">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>documento</mat-label>
+              <input type="text" matInput placeholder="documento" formControlName="doc_user">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>telefono</mat-label>
+              <input type="text" matInput placeholder="telefono" formControlName="telefono">
+            </mat-form-field>
+
+            <button mat-button mat-flat-button color="primary" [disabled]="formResident.invalid"
+              (click)="saveResident()">
+              <mat-icon>person_add</mat-icon>
+              Agregar
+            </button>
+
+          </div>
+        </form>
 
       </mat-card-content>
     </mat-card>

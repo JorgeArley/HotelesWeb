@@ -25,11 +25,11 @@ export class NewRoomComponent {
     habilitado: new FormControl(true),
     disponible: new FormControl(true),
     hotel: new FormControl(''),
-    costo_base: new FormControl('10000'),
-    impuesto: new FormControl('1000'),
-    tipo: new FormControl('grande'),
-    ubicacion: new FormControl('españa'),
-    numero: new FormControl('2'),
+    costo_base: new FormControl(''),
+    impuesto: new FormControl(''),
+    tipo: new FormControl(''),
+    ubicacion: new FormControl(''),
+    numero: new FormControl(''),
   });
 
   constructor(
@@ -93,7 +93,4 @@ export class NewRoomComponent {
       });
   }
 
-  onDeleteRoom() {
-    console.log("eliminar habitacion")
-  }
 }

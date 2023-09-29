@@ -10,12 +10,22 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Dev
-1. clonar el proyecto
-2. ejecutar ```npm install```
-3. levantar backend ```npm run backend```
-2. ejecutar la app ```npm start```
-
 ## memory to erase
 1. $ sudo sysctl fs.inotify.max_user_watches=524288
 2. $ sudo sysctl -p
+## Dev
+1. clonar el proyecto
+2. ejecutar ```npm install```
+3. ejecute ```ng serve``` el backend esta en la nube y no tendra que hacer nada mas
+
+## criterios a tener en cuenta
+1. Todos los usuarios se crean con el role 'user'
+2. El rol admin lo tiene el correo: jorge@gmail.com y password: 123456
+3. Puede crear un usuario para probar el role user
+4. La aplicacion esta hecha en angular 16, express y mongo para DB
+5. La ruta para la prueba es: 
+    `https://mellow-caramel-13eceb.netlify.app/#/auth/login`
+6. Los repositorios son los siguientes:
+    * Frontend: `https://github.com/JorgeArley/HotelesWeb`
+    * Backend: `https://github.com/JorgeArley/HotelesBackend`
+7. Para probar el envio del correo debe ingresar un correo valido a la hora de registrarse

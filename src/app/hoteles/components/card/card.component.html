@@ -4,7 +4,6 @@
       <mat-card-subtitle>{{ hotel.direccion }}</mat-card-subtitle>
     </mat-card-header>
   
-    <!-- TODO: imagen -->
     <img mat-card-image [src]="hotel.imagen" [alt]="hotel.imagen">
   
     <mat-card-content class="mt-2">
@@ -15,13 +14,6 @@
         <mat-chip>
           {{ hotel.cantidad_habitaciones }}
         </mat-chip>
-
-        <!-- <mat-chip-listbox> -->
-          <!-- <mat-chip *ngFor="let name of hotel.characters.split(',') | slice:0:3"> -->
-          <!-- <mat-chip>
-            {{ hotel.cantidad_habitaciones }}
-          </mat-chip> -->
-        <!-- </mat-chip-listbox> -->
       </p>
     </mat-card-content>
   
@@ -30,6 +22,7 @@
     <mat-card-actions>
   
       <button mat-button
+        *ngIf="role === 'admin'"
         mat-raised
         color="primary"
         [routerLink]="['/hoteles/edit', hotel.id ]">

@@ -9,10 +9,12 @@ import { HotelesService } from '../../services/hoteles.service'
 })
 export class ListPageComponent {
   public hoteles: Hotel[] = [];
+  public user: string | null = '';
 
   constructor ( private hotelesService: HotelesService){}
 
   ngOnInit(): void {
+    this.user = localStorage.getItem('role');
     this.hotelesService.getHoteles()
       .subscribe( (hoteles:any) => {
         this.hoteles = hoteles.hoteles
